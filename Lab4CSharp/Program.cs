@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 
 /// <summary>
@@ -239,20 +240,20 @@ class VectorFloat{
 
     //Методи
     public void Input(){
-        for (int i = 0; i < num; i++){
+        for (uint i = 0; i < num; i++){
             Console.Write($"Element {i}: ");
             FArray[i] = float.Parse(Console.ReadLine());
         }
     }
 
     public void Output(){
-        for (int i = 0; i < num; i++){
+        for (uint i = 0; i < num; i++){
             Console.WriteLine($"Element {i}: {FArray[i]}");
         }
     }
 
     public void SetValue(float value){
-        for (int i = 0; i < num; i++){
+        for (uint i = 0; i < num; i++){
             FArray[i] = value;
         }
     }
@@ -287,11 +288,32 @@ class VectorFloat{
                 codeError = -1;
             } else{
                 codeError = 0;
-                FArray[index];
+                FArray[index] = value;
             }
         }
     }
 
     //Перевантаження
+    public static VectorFloat operator ++(VectorFloat vector){
+        for (uint i = 0; i < vector.num; i++){
+            vector.FArray[i]++;
+        }
+        return vector;
+    }
+
+    public static VectorFloat operator --(VectorFloat vector){
+        for (uint i = 0; i < vector.num; i++){
+            vector.FArray[i]--;
+        }
+        return vector;
+    }
+
+    public static bool operator true(VectorFloat vector){
+        foreach (float elem in vector.FArray){
+            if (elem == 0){
+                
+            }
+        }
+    }
 
 }
