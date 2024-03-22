@@ -109,8 +109,6 @@ Console.WriteLine(cl + "   " + cl2 + "   ");
                     // Перевірка зсувів
                     Console.WriteLine("\nVector 1 >> Vector 2:");
                     (vector1 >> vector2).Output();
-                    Console.WriteLine("\nVector 1 << Vector 2:");
-                    (vector1 << vector2).Output();
 
                     // Операції зі скаляром
                     float scalar = 2.0f;
@@ -187,10 +185,6 @@ Console.WriteLine(cl + "   " + cl2 + "   ");
                     FloatMatrix andResult = matrix1 & matrix2;
                     Console.WriteLine("\nResult of Bitwise AND:");
                     andResult.Output();
-
-                    FloatMatrix rightShiftResult = matrix1 >> matrix2;
-                    Console.WriteLine("\nResult of Bitwise Right Shift:");
-                    rightShiftResult.Output();
 
                     // Перевірка функцій-операцій порівняння та рівності
                     Console.WriteLine("\nEquality and Comparison:");
