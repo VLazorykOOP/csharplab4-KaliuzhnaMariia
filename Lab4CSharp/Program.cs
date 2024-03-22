@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Linq.Expressions;
+using System.Numerics;
 using System.Runtime.InteropServices;
+using System.Runtime.Intrinsics;
 
 /// <summary>
 ///  Top-level statements 
@@ -67,6 +69,57 @@ Console.WriteLine(cl + "   " + cl2 + "   ");
                 } break;
                 case 2:{
                     Console.Write("Task 2");
+                    VectorFloat vector1 = new VectorFloat(3, 1.5f);
+                    VectorFloat vector2 = new VectorFloat(3, 2.5f);
+
+        // Виведення значень векторів
+        Console.WriteLine("\nVector 1:");
+        vector1.Output();
+        Console.WriteLine("\nVector 2:");
+        vector2.Output();
+
+        // Перевірка операцій порівняння
+        Console.WriteLine("\nVector 1 == Vector 2: " + (vector1 == vector2));
+        Console.WriteLine("Vector 1 != Vector 2: " + (vector1 != vector2));
+        Console.WriteLine("Vector 1 > Vector 2: " + (vector1 > vector2));
+        Console.WriteLine("Vector 1 >= Vector 2: " + (vector1 >= vector2));
+        Console.WriteLine("Vector 1 < Vector 2: " + (vector1 < vector2));
+        Console.WriteLine("Vector 1 <= Vector 2: " + (vector1 <= vector2));
+
+        // Перевірка арифметичних операцій
+        Console.WriteLine("\nVector 1 + Vector 2:");
+        (vector1 + vector2).Output();
+        Console.WriteLine("\nVector 1 - Vector 2:");
+        (vector1 - vector2).Output();
+        Console.WriteLine("\nVector 1 * Vector 2:");
+        (vector1 * vector2).Output();
+        Console.WriteLine("\nVector 1 / Vector 2:");
+        (vector1 / vector2).Output();
+        Console.WriteLine("\nVector 1 % Vector 2:");
+        (vector1 % vector2).Output();
+
+        // Перевірка побітових операцій
+        Console.WriteLine("\nVector 1 | Vector 2:");
+        (vector1 | vector2).Output();
+        Console.WriteLine("\nVector 1 ^ Vector 2:");
+        (vector1 ^ vector2).Output();
+        Console.WriteLine("\nVector 1 & Vector 2:");
+        (vector1 & vector2).Output();
+
+        // Перевірка зсувів
+        Console.WriteLine("\nVector 1 >> Vector 2:");
+        (vector1 >> vector2).Output();
+        Console.WriteLine("\nVector 1 << Vector 2:");
+        (vector1 << vector2).Output();
+
+        // Інші операції
+        Console.WriteLine("\n~Vector 1:");
+        (~vector1).Output();
+        Console.WriteLine("\n++Vector 1:");
+        (++vector1).Output();
+        Console.WriteLine("\n--Vector 1:");
+        (--vector1).Output();
+        Console.WriteLine("\n!Vector 1: " + !vector1);
                 }break;
             }
 
@@ -193,7 +246,6 @@ class Trapeze
     throw new ArgumentException("Invalid string format for Trapeze.");
     }
 
-
         public override string ToString()
     {
         return $"Trapeze: side a={a}, side b={b}, height={h}, color={c}";
@@ -226,7 +278,7 @@ class VectorFloat{
     public VectorFloat(uint size, float initvalue){
         num = size;
         FArray = new float[num];
-        for (int i = 0; i < num; i++){
+        for (uint i = 0; i < num; i++){
             FArray[i] = initvalue;
         }
         codeError = 0;
@@ -311,9 +363,296 @@ class VectorFloat{
     public static bool operator true(VectorFloat vector){
         foreach (float elem in vector.FArray){
             if (elem == 0){
-                
+                return false;
             }
         }
+        return true;
     }
+
+    public static bool operator false(VectorFloat vector){
+        foreach (float elem in vector.FArray){
+            if (elem == 0){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static bool operator !(VectorFloat vector){
+         for (uint i = 0; i < vector.num; i++){
+            if (vector.FArray[i] == 0){
+                return false;
+            }
+        }
+        return vector.num != 0;
+    }
+
+
+    public static VectorFloat operator ~(VectorFloat vector){
+        VectorFloat rez = new VectorFloat(vector.num);
+        for (int i = 0; i < vector.num; i++){
+            rez[i] = ~Convert.ToInt32(vector[i]);
+        }
+        return rez;
+    }
+
+    //Арифметичні бінарні операції
+    public static VectorFloat operator +(VectorFloat vector1, VectorFloat vector2){
+        if (vector1.num != vector2.num){
+            throw new ArgumentException("Vectors must be the same length!");
+        }
+        VectorFloat rez = new VectorFloat(vector1.num);
+        for (int i = 0; i < vector1.num; i++){
+            rez.FArray[i] = vector1.FArray[i] + vector2.FArray[i];
+        }
+        return rez;
+    }
+
+    public static VectorFloat operator +(VectorFloat vector1, float scalar){
+        VectorFloat rez = new VectorFloat(vector1.num);
+        for (int i = 0; i < vector1.num; i++){
+            rez.FArray[i] = vector1.FArray[i] + scalar;
+        }
+        return rez;
+    }
+
+    public static VectorFloat operator -(VectorFloat vector1, VectorFloat vector2){
+        if (vector1.num != vector2.num){
+            throw new ArgumentException("Vectors must be the same length!");
+        }
+        VectorFloat rez = new VectorFloat(vector1.num);
+        for (int i = 0; i < vector1.num; i++){
+            rez.FArray[i] = vector1.FArray[i] - vector2.FArray[i];
+        }
+        return rez;
+    }
+
+    public static VectorFloat operator -(VectorFloat vector1, float scalar){
+        VectorFloat rez = new VectorFloat(vector1.num);
+        for (int i = 0; i < vector1.num; i++){
+            rez.FArray[i] = vector1.FArray[i] - scalar;
+        }
+        return rez;
+    }
+
+    public static VectorFloat operator *(VectorFloat vector1, VectorFloat vector2){
+        if (vector1.num != vector2.num){
+            throw new ArgumentException("Vectors must be the same length!");
+        }
+        VectorFloat rez = new VectorFloat(vector1.num);
+        for (int i = 0; i < vector1.num; i++){
+            rez.FArray[i] = vector1.FArray[i] * vector2.FArray[i];
+        }
+        return rez;
+    }
+
+    public static VectorFloat operator *(VectorFloat vector1, float scalar){
+        VectorFloat rez = new VectorFloat(vector1.num);
+        for (int i = 0; i < vector1.num; i++){
+            rez.FArray[i] = vector1.FArray[i] * scalar;
+        }
+        return rez;
+    }
+
+    public static VectorFloat operator /(VectorFloat vector1, VectorFloat vector2){
+        if (vector1.num != vector2.num){
+            throw new ArgumentException("Vectors must be the same length!");
+        }
+        VectorFloat rez = new VectorFloat(vector1.num);
+        for (int i = 0; i < vector1.num; i++){
+            if (vector2.FArray[i] == 0){
+                throw new DivideByZeroException("Division by zero!");
+            }
+            rez.FArray[i] = vector1.FArray[i] / vector2.FArray[i];
+        }
+        return rez;
+    }
+
+    public static VectorFloat operator /(VectorFloat vector1, float scalar){
+        if (scalar == 0){
+            throw new DivideByZeroException("Division by zero!");
+        }
+        VectorFloat rez = new VectorFloat(vector1.num);
+        for (int i = 0; i < vector1.num; i++){
+            rez.FArray[i] = vector1.FArray[i] / scalar;
+        }
+        return rez;
+    }
+
+    public static VectorFloat operator %(VectorFloat vector1, VectorFloat vector2){
+        if (vector1.num != vector2.num){
+            throw new ArgumentException("Vectors must be the same length!");
+        }
+        VectorFloat rez = new VectorFloat(vector1.num);
+        for (int i = 0; i < vector1.num; i++){
+            if (vector2.FArray[i] == 0){
+                throw new DivideByZeroException("Division by zero!");
+            }
+            rez.FArray[i] = vector1.FArray[i] % vector2.FArray[i];
+        }
+        return rez;
+    }
+
+    //Побітові бінарні операції
+    public static VectorFloat operator |(VectorFloat vector1, VectorFloat vector2){
+        if (vector1.num != vector2.num){
+            throw new ArgumentException("Vectors must be the same length!");
+        }
+        VectorFloat rez = new VectorFloat(vector1.num);
+        for (int i = 0; i < vector1.num; i++){
+            rez.FArray[i] = (byte)vector1.FArray[i] | (byte)vector2.FArray[i];
+        }
+        return rez;
+    }
+
+    public static VectorFloat operator |(VectorFloat vector, byte scalar){
+    VectorFloat rez = new VectorFloat(vector.num);
+    for (int i = 0; i < vector.num; i++){
+        rez.FArray[i] = (byte)vector.FArray[i] | scalar;
+    }
+    return rez;
+    }
+
+    public static VectorFloat operator ^(VectorFloat vector1, VectorFloat vector2){
+        if (vector1.num != vector2.num){
+            throw new ArgumentException("Vectors must be the same length!");
+        }
+        VectorFloat rez = new VectorFloat(vector1.num);
+        for (int i = 0; i < vector1.num; i++){
+            rez.FArray[i] = (byte)vector1.FArray[i] ^ (byte)vector2.FArray[i];
+        }
+        return rez;
+    }
+
+    public static VectorFloat operator ^(VectorFloat vector, byte scalar){
+    VectorFloat rez = new VectorFloat(vector.num);
+    for (int i = 0; i < vector.num; i++){
+        rez.FArray[i] = (byte)vector.FArray[i] ^ scalar;
+    }
+    return rez;
+    }
+
+    public static VectorFloat operator &(VectorFloat vector1, VectorFloat vector2){
+        if (vector1.num != vector2.num){
+            throw new ArgumentException("Vectors must be the same length!");
+        }
+        VectorFloat rez = new VectorFloat(vector1.num);
+        for (int i = 0; i < vector1.num; i++){
+            rez.FArray[i] = (byte)vector1.FArray[i] & (byte)vector2.FArray[i];
+        }
+        return rez;
+    }
+
+    public static VectorFloat operator &(VectorFloat vector, byte scalar){
+    VectorFloat rez = new VectorFloat(vector.num);
+    for (int i = 0; i < vector.num; i++){
+        rez.FArray[i] = (byte)vector.FArray[i] & scalar;
+    }
+    return rez;
+    }
+
+    public static VectorFloat operator >>(VectorFloat vector1, VectorFloat vector2){
+        if (vector1.num != vector2.num){
+            throw new ArgumentException("Vectors must be the same length!");
+        }
+        VectorFloat rez = new VectorFloat(vector1.num);
+        for (int i = 0; i < vector1.num; i++){
+            rez.FArray[i] = (byte)vector1.FArray[i] >> (byte)vector2.FArray[i];
+        }
+        return rez;
+    }
+
+    public static VectorFloat operator >>(VectorFloat vector, uint scalar){
+    VectorFloat rez = new VectorFloat(vector.num);
+    for (int i = 0; i < vector.num; i++){
+        rez.FArray[i] = (byte)vector.FArray[i] >> (int)scalar;
+    }
+    return rez;
+    }
+
+    public static VectorFloat operator <<(VectorFloat vector1, VectorFloat vector2){
+        if (vector1.num != vector2.num){
+            throw new ArgumentException("Vectors must be the same length!");
+        }
+        VectorFloat rez = new VectorFloat(vector1.num);
+        for (int i = 0; i < vector1.num; i++){
+            rez.FArray[i] = (byte)vector1.FArray[i] << (byte)vector2.FArray[i];
+        }
+        return rez;
+    }
+
+    public static VectorFloat operator <<(VectorFloat vector, uint scalar){
+    VectorFloat rez = new VectorFloat(vector.num);
+    for (int i = 0; i < vector.num; i++){
+        rez.FArray[i] = (byte)vector.FArray[i] << (int)scalar;
+    }
+    return rez;
+    }
+
+    public static bool operator ==(VectorFloat vector1, VectorFloat vector2){
+        if (vector1.num != vector2.num){
+            return false;
+        }
+        for (int i = 0; i < vector1.num; i++){
+            if (vector1.FArray[i] != vector2.FArray[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static bool operator !=(VectorFloat vector1, VectorFloat vector2){
+        return !(vector1 == vector2);
+    }
+
+    public static bool operator >(VectorFloat vector1, VectorFloat vector2){
+        if (vector1.num != vector2.num){
+            throw new ArgumentException("Vectors must be the same length!");
+        }
+        for (int i = 0; i < vector1.num; i++){
+            if (vector1.FArray[i] <= vector2.FArray[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static bool operator <(VectorFloat vector1, VectorFloat vector2){
+         if (vector1.num != vector2.num){
+            throw new ArgumentException("Vectors must be the same length!");
+        }
+        for (int i = 0; i < vector1.num; i++){
+            if (vector1.FArray[i] >= vector2.FArray[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static bool operator >=(VectorFloat vector1, VectorFloat vector2){
+        if (vector1.num != vector2.num){
+            throw new ArgumentException("Vectors must be the same length!");
+        }
+        for (int i = 0; i < vector1.num; i++){
+            if (vector1.FArray[i] < vector2.FArray[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static bool operator <=(VectorFloat vector1, VectorFloat vector2){
+        if (vector1.num != vector2.num){
+            throw new ArgumentException("Vectors must be the same length!");
+        }
+        for (int i = 0; i < vector1.num; i++){
+            if (vector1.FArray[i] > vector2.FArray[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 
 }
