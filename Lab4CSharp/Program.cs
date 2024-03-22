@@ -31,7 +31,7 @@ Lab4CSharp.UserClass cl2 = new Lab4CSharp.UserClass();
 cl2.Name = " UserClass namespace Lab4CSharp ";
 Console.WriteLine(cl + "   " + cl2 + "   ");
 
- Console.Write("Enter the number of task (1 - 2): ");
+ Console.Write("Enter the number of task (1 - 3): ");
             int choice = Int32.Parse(Console.ReadLine());
             switch (choice){
                 case 1:{
@@ -72,54 +72,140 @@ Console.WriteLine(cl + "   " + cl2 + "   ");
                     VectorFloat vector1 = new VectorFloat(3, 1.5f);
                     VectorFloat vector2 = new VectorFloat(3, 2.5f);
 
-        // Виведення значень векторів
-        Console.WriteLine("\nVector 1:");
-        vector1.Output();
-        Console.WriteLine("\nVector 2:");
-        vector2.Output();
+                    // Виведення значень векторів
+                    Console.WriteLine("\nVector 1:");
+                    vector1.Output();
+                    Console.WriteLine("\nVector 2:");
+                    vector2.Output();
 
-        // Перевірка операцій порівняння
-        Console.WriteLine("\nVector 1 == Vector 2: " + (vector1 == vector2));
-        Console.WriteLine("Vector 1 != Vector 2: " + (vector1 != vector2));
-        Console.WriteLine("Vector 1 > Vector 2: " + (vector1 > vector2));
-        Console.WriteLine("Vector 1 >= Vector 2: " + (vector1 >= vector2));
-        Console.WriteLine("Vector 1 < Vector 2: " + (vector1 < vector2));
-        Console.WriteLine("Vector 1 <= Vector 2: " + (vector1 <= vector2));
+                    // Перевірка операцій порівняння
+                    Console.WriteLine("\nVector 1 == Vector 2: " + (vector1 == vector2));
+                    Console.WriteLine("Vector 1 != Vector 2: " + (vector1 != vector2));
+                    Console.WriteLine("Vector 1 > Vector 2: " + (vector1 > vector2));
+                    Console.WriteLine("Vector 1 >= Vector 2: " + (vector1 >= vector2));
+                    Console.WriteLine("Vector 1 < Vector 2: " + (vector1 < vector2));
+                    Console.WriteLine("Vector 1 <= Vector 2: " + (vector1 <= vector2));
 
-        // Перевірка арифметичних операцій
-        Console.WriteLine("\nVector 1 + Vector 2:");
-        (vector1 + vector2).Output();
-        Console.WriteLine("\nVector 1 - Vector 2:");
-        (vector1 - vector2).Output();
-        Console.WriteLine("\nVector 1 * Vector 2:");
-        (vector1 * vector2).Output();
-        Console.WriteLine("\nVector 1 / Vector 2:");
-        (vector1 / vector2).Output();
-        Console.WriteLine("\nVector 1 % Vector 2:");
-        (vector1 % vector2).Output();
+                    // Перевірка арифметичних операцій
+                    Console.WriteLine("\nVector 1 + Vector 2:");
+                    (vector1 + vector2).Output();
+                    Console.WriteLine("\nVector 1 - Vector 2:");
+                    (vector1 - vector2).Output();
+                    Console.WriteLine("\nVector 1 * Vector 2:");
+                    (vector1 * vector2).Output();
+                    Console.WriteLine("\nVector 1 / Vector 2:");
+                    (vector1 / vector2).Output();
+                    Console.WriteLine("\nVector 1 % Vector 2:");
+                    (vector1 % vector2).Output();
 
-        // Перевірка побітових операцій
-        Console.WriteLine("\nVector 1 | Vector 2:");
-        (vector1 | vector2).Output();
-        Console.WriteLine("\nVector 1 ^ Vector 2:");
-        (vector1 ^ vector2).Output();
-        Console.WriteLine("\nVector 1 & Vector 2:");
-        (vector1 & vector2).Output();
+                    // Перевірка побітових операцій
+                    Console.WriteLine("\nVector 1 | Vector 2:");
+                    (vector1 | vector2).Output();
+                    Console.WriteLine("\nVector 1 ^ Vector 2:");
+                    (vector1 ^ vector2).Output();
+                    Console.WriteLine("\nVector 1 & Vector 2:");
+                    (vector1 & vector2).Output();
 
-        // Перевірка зсувів
-        Console.WriteLine("\nVector 1 >> Vector 2:");
-        (vector1 >> vector2).Output();
-        Console.WriteLine("\nVector 1 << Vector 2:");
-        (vector1 << vector2).Output();
+                    // Перевірка зсувів
+                    Console.WriteLine("\nVector 1 >> Vector 2:");
+                    (vector1 >> vector2).Output();
+                    Console.WriteLine("\nVector 1 << Vector 2:");
+                    (vector1 << vector2).Output();
 
-        // Інші операції
-        Console.WriteLine("\n~Vector 1:");
-        (~vector1).Output();
-        Console.WriteLine("\n++Vector 1:");
-        (++vector1).Output();
-        Console.WriteLine("\n--Vector 1:");
-        (--vector1).Output();
-        Console.WriteLine("\n!Vector 1: " + !vector1);
+                    // Операції зі скаляром
+                    float scalar = 2.0f;
+                    Console.WriteLine($"\nVector 1 + Scalar ({scalar}):");
+                    (vector1 + scalar).Output();
+                    Console.WriteLine($"\nVector 1 - Scalar ({scalar}):");
+                    (vector1 - scalar).Output();
+                    Console.WriteLine($"\nVector 1 * Scalar ({scalar}):");
+                    (vector1 * scalar).Output();
+                    Console.WriteLine($"\nVector 1 / Scalar ({scalar}):");
+                    (vector1 / scalar).Output();
+
+                    // Інші операції
+                    Console.WriteLine("\n~Vector 1:");
+                    (~vector1).Output();
+                    Console.WriteLine("\n++Vector 1:");
+                    (++vector1).Output();
+                    Console.WriteLine("\n--Vector 1:");
+                    (--vector1).Output();
+                    Console.WriteLine("\n!Vector 1: " + !vector1);
+                }break;
+                case 3:{
+                    FloatMatrix matrix1 = new FloatMatrix(2, 2, 1.5f);
+                    FloatMatrix matrix2 = new FloatMatrix(2, 2, 2.5f);
+                    float scalar = 2.0f;
+
+                    Console.WriteLine("Matrix 1:");
+                    matrix1.Output();
+                    Console.WriteLine("\nMatrix 2:");
+                    matrix2.Output();
+                    Console.WriteLine($"\nScalar: {scalar}");
+
+                    // Перевірка операцій між матрицями
+                    Console.WriteLine("\nMatrix Operations:");
+
+                    Console.WriteLine("\nAddition:");
+                    FloatMatrix addResult = matrix1 + matrix2;
+                    addResult.Output();
+
+                    Console.WriteLine("\nSubtraction:");
+                    FloatMatrix subResult = matrix1 - matrix2;
+                    subResult.Output();
+
+                    Console.WriteLine("\nMultiplication:");
+                    FloatMatrix mulResult = matrix1 * matrix2;
+                    mulResult.Output();
+
+                    Console.WriteLine("\nDivision:");
+                    FloatMatrix divResult = matrix1 / matrix2;
+                    divResult.Output();
+
+                    Console.WriteLine("\nModulus:");
+                    FloatMatrix modResult = matrix1 % matrix2;
+                    modResult.Output();
+
+                    Console.WriteLine("\nAddition with Scalar:");
+                    FloatMatrix addResultScalar = matrix1 + scalar;
+                    addResultScalar.Output();
+
+                    Console.WriteLine("\nMultiplication with Scalar:");
+                    FloatMatrix mulResultScalar = matrix2 * scalar;
+                    mulResultScalar.Output();
+
+                    // Перевірка побітових операцій
+                    Console.WriteLine("\nBitwise Operations:");
+                    FloatMatrix orResult = matrix1 | matrix2;
+                    Console.WriteLine("\nResult of Bitwise OR:");
+                    orResult.Output();
+
+                    FloatMatrix xorResult = matrix1 ^ matrix2;
+                    Console.WriteLine("\nResult of Bitwise XOR:");
+                    xorResult.Output();
+
+                    FloatMatrix andResult = matrix1 & matrix2;
+                    Console.WriteLine("\nResult of Bitwise AND:");
+                    andResult.Output();
+
+                    FloatMatrix rightShiftResult = matrix1 >> matrix2;
+                    Console.WriteLine("\nResult of Bitwise Right Shift:");
+                    rightShiftResult.Output();
+
+                    // Перевірка функцій-операцій порівняння та рівності
+                    Console.WriteLine("\nEquality and Comparison:");
+                    bool areEqual = matrix1 == matrix2;
+                    bool greaterThan = matrix1 > matrix2;
+                    bool lessThan = matrix1 < matrix2;
+                    bool greaterThanOrEqual = matrix1 >= matrix2;
+                    bool lessThanOrEqual = matrix1 <= matrix2;
+
+                    Console.WriteLine($"Matrix 1 is equal to Matrix 2: {areEqual}");
+                    Console.WriteLine($"Matrix 1 is greater than Matrix 2: {greaterThan}");
+                    Console.WriteLine($"Matrix 1 is less than Matrix 2: {lessThan}");
+                    Console.WriteLine($"Matrix 1 is greater than or equal to Matrix 2: {greaterThanOrEqual}");
+                    Console.WriteLine($"Matrix 1 is less than or equal to Matrix 2: {lessThanOrEqual}");
+
                 }break;
             }
 
@@ -252,7 +338,7 @@ class Trapeze
     }
 }
 
-//Завдання 2
+//Вектор
 class VectorFloat{
     //Поля
     protected float[] FArray;
@@ -652,7 +738,545 @@ class VectorFloat{
         }
         return true;
     }
+}
 
+//Матриця
+class FloatMatrix
+{
+    protected float[,] FMArray;
+    protected uint n, m;
+    protected int codeError;
+    protected static int num_mf;
 
+    //Конструктори
+    public FloatMatrix(){
+        n = m = 1;
+        FMArray = new float[1, 1];
+        codeError = 0;
+        num_mf++;
+    }
 
+    public FloatMatrix(uint rows, uint columns){
+        n = rows;
+        m = columns;
+        FMArray = new float[rows, columns];
+        codeError = 0;
+        num_mf++;
+    }
+
+    public FloatMatrix(uint rows, uint columns, float initValue){
+        n = rows;
+        m = columns;
+        FMArray = new float[rows, columns];
+        for (uint i = 0; i < n; i++){
+            for (uint j = 0; j < m; j++){
+                FMArray[i, j] = initValue;
+            }
+        }
+        codeError = 0;
+        num_mf++;
+    }
+
+    //Деструктор
+    ~FloatMatrix(){
+        Console.WriteLine("Destructor called!");
+    }
+
+    //Методи
+    public void Input(){
+        for (uint i = 0; i < n; i++){
+            for (uint j = 0; j < m; j++){
+                Console.Write($"Element [{i},{j}]: ");
+                FMArray[i, j] = float.Parse(Console.ReadLine());
+            }
+        }
+    }
+
+    public void Output(){
+        for (uint i = 0; i < n; i++){
+            for (uint j = 0; j < m; j++){
+                Console.Write($"{FMArray[i, j]} ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    public void SetValue(float value){
+        for (uint i = 0; i < n; i++){
+            for (uint j = 0; j < m; j++){
+                FMArray[i, j] = value;
+            }
+        }
+    }
+
+    public static int CalculateMatrices(){
+        return num_mf;
+    }
+
+    //Властивості
+    public uint Rows{
+        get { return n; }
+    }
+
+    public uint Columns{
+        get { return m; }
+    }
+
+    public int CodeError{
+        get { return codeError; }
+        set { codeError = value; }
+    }
+
+    //Індексатори
+    public float this[int i, int j]{
+        get{
+            if (i < 0 || i >= n || j < 0 || j >= m){
+                codeError = -1;
+                return 0;
+            } else{
+                codeError = 0;
+                return FMArray[i, j];
+            }
+        } set{
+            if (i < 0 || i >= n || j < 0 || j >= m){
+                codeError = -1;
+            } else{
+                codeError = 0;
+                FMArray[i, j] = value;
+            }
+        }
+    }
+
+    public float this[int k]{
+        get{
+            int i = k / (int)m;
+            int j = k % (int)m;
+            if (i < 0 || i >= n || j < 0 || j >= m){
+                codeError = -1;
+                return 0;
+            } else{
+                codeError = 0;
+                return FMArray[i, j];
+            }
+        } set{
+            int i = k / (int)m;
+            int j = k % (int)m;
+            if (i < 0 || i >= n || j < 0 || j >= m){
+                codeError = -1;
+            } else{
+                codeError = 0;
+                FMArray[i, j] = value;
+            }
+        }
+    }
+
+    //Перевантаження
+    public static FloatMatrix operator ++(FloatMatrix matrix){
+        for (uint i = 0; i < matrix.n; i++){
+            for (uint j = 0; j < matrix.m; j++){
+                matrix.FMArray[i, j]++;
+            }
+        }
+        return matrix;
+    }
+
+    public static FloatMatrix operator --(FloatMatrix matrix){
+        for (uint i = 0; i < matrix.n; i++){
+            for (uint j = 0; j < matrix.m; j++){
+                matrix.FMArray[i, j]--;
+            }
+        }
+        return matrix;
+    }
+
+    public static bool operator true(FloatMatrix matrix){
+        foreach (var element in matrix.FMArray){
+            if (element == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static bool operator false(FloatMatrix matrix){
+        foreach (var element in matrix.FMArray){
+            if (element == 0){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static bool operator !(FloatMatrix matrix){
+        foreach (var element in matrix.FMArray){
+            if (element == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static FloatMatrix operator ~(FloatMatrix matrix){
+        FloatMatrix rez = new FloatMatrix(matrix.n, matrix.m);
+        for (int i = 0; i < matrix.n; i++){
+            for (int j = 0; j < matrix.m; j++){
+                rez[i, j] = ~(byte)matrix[i, j];
+            }
+        }
+        return rez;
+    }
+
+    //Арифметичні бінарні операції
+    public static FloatMatrix operator +(FloatMatrix matrix1, FloatMatrix matrix2)
+    {
+        uint rows = Math.Min(matrix1.n, matrix2.n);
+        uint columns = Math.Min(matrix1.m, matrix2.m);
+        FloatMatrix result = new FloatMatrix(rows, columns);
+        for (int i = 0; i < rows; i++){
+            for (int j = 0; j < columns; j++){
+                result[i, j] = matrix1[i, j] + matrix2[i, j];
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator +(FloatMatrix matrix, float scalar){
+        FloatMatrix result = new FloatMatrix(matrix.n, matrix.m);
+        for (int i = 0; i < matrix.n; i++){
+            for (int j = 0; j < matrix.m; j++){
+                result[i, j] = matrix[i, j] + scalar;
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator -(FloatMatrix matrix1, FloatMatrix matrix2){
+        if (matrix1.n != matrix2.n || matrix1.m != matrix2.m){
+            throw new ArgumentException("Matrices must have the same dimensions.");
+        }
+        FloatMatrix result = new FloatMatrix(matrix1.n, matrix1.m);
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix1.m; j++){
+                result[i, j] = matrix1[i, j] - matrix2[i, j];
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator -(FloatMatrix matrix, float scalar){
+        FloatMatrix result = new FloatMatrix(matrix.n, matrix.m);
+        for (int i = 0; i < matrix.n; i++){
+            for (int j = 0; j < matrix.m; j++){
+                result[i, j] = matrix[i, j] - scalar;
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator *(FloatMatrix matrix1, FloatMatrix matrix2){
+        if (matrix1.m != matrix2.n){
+            throw new ArgumentException("Number of columns in the first matrix must be equal to the number of rows in the second matrix.");
+        }
+        FloatMatrix result = new FloatMatrix(matrix1.n, matrix2.m);
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix2.m; j++){
+                for (int k = 0; k < matrix1.m; k++){
+                    result[i, j] += matrix1[i, k] * matrix2[k, j];
+                }
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator *(FloatMatrix matrix, VectorFloat vector){
+        if (matrix.m != vector.Size){
+            throw new ArgumentException("Number of columns in the matrix must be equal to the size of the vector.");
+        }
+        FloatMatrix result = new FloatMatrix(matrix.n, 1);
+        for (int i = 0; i < matrix.n; i++){
+            for (int j = 0; j < matrix.m; j++){
+                result[i, 0] += matrix[i, j] * vector[j];
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator *(FloatMatrix matrix, float scalar){
+        FloatMatrix result = new FloatMatrix(matrix.n, matrix.m);
+        for (int i = 0; i < matrix.n; i++){
+            for (int j = 0; j < matrix.m; j++){
+                result[i, j] = matrix[i, j] * scalar;
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator /(FloatMatrix matrix1, FloatMatrix matrix2){
+        if (matrix1.n != matrix2.n || matrix1.m != matrix2.m){
+            throw new ArgumentException("Matrices must have the same dimensions.");
+        }
+        FloatMatrix result = new FloatMatrix(matrix1.n, matrix1.m);
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix1.m; j++){
+                result[i, j] = matrix1[i, j] / matrix2[i, j];
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator /(FloatMatrix matrix, float scalar){
+        if (scalar == 0){
+            throw new DivideByZeroException("Division by zero.");
+        }
+        FloatMatrix result = new FloatMatrix(matrix.n, matrix.m);
+        for (int i = 0; i < matrix.n; i++){
+            for (int j = 0; j < matrix.m; j++){
+                result[i, j] = matrix[i, j] / scalar;
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator %(FloatMatrix matrix1, FloatMatrix matrix2){
+        if (matrix1.n != matrix2.n || matrix1.m != matrix2.m){
+            throw new ArgumentException("Matrices must have the same dimensions.");
+        }
+        FloatMatrix result = new FloatMatrix(matrix1.n, matrix1.m);
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix1.m; j++){
+                result[i, j] = matrix1[i, j] % matrix2[i, j];
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator %(FloatMatrix matrix, float scalar){
+        FloatMatrix result = new FloatMatrix(matrix.n, matrix.m);
+        for (int i = 0; i < matrix.n; i++){
+            for (int j = 0; j < matrix.m; j++){
+                result[i, j] = matrix[i, j] % scalar;
+            }
+        }
+        return result;
+    }
+
+    //Побітові бінарні операції 
+    public static FloatMatrix operator |(FloatMatrix matrix1, FloatMatrix matrix2){
+        if (matrix1.n != matrix2.n || matrix1.m != matrix2.m){
+            throw new ArgumentException("Matrices must have the same dimensions.");
+        }
+        FloatMatrix result = new FloatMatrix(matrix1.n, matrix1.m);
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix1.m; j++){
+                result[i, j] = (int)matrix1[i, j] | (int)matrix2[i, j];
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator |(FloatMatrix matrix, float scalar){
+        FloatMatrix result = new FloatMatrix(matrix.n, matrix.m);
+        for (int i = 0; i < matrix.n; i++){
+            for (int j = 0; j < matrix.m; j++){
+                result[i, j] = (int)matrix[i, j] | (int)scalar;
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator ^(FloatMatrix matrix1, FloatMatrix matrix2){
+        if (matrix1.n != matrix2.n || matrix1.m != matrix2.m){
+            throw new ArgumentException("Matrices must have the same dimensions.");
+        }
+        FloatMatrix result = new FloatMatrix(matrix1.n, matrix1.m);
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix1.m; j++){
+                result[i, j] = (int)matrix1[i, j] ^ (int)matrix2[i, j];
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator ^(FloatMatrix matrix, float scalar){
+        FloatMatrix result = new FloatMatrix(matrix.n, matrix.m);
+        for (int i = 0; i < matrix.n; i++){
+            for (int j = 0; j < matrix.m; j++){
+                result[i, j] = (int)matrix[i, j] ^ (int)scalar;
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator &(FloatMatrix matrix1, FloatMatrix matrix2)
+    {
+        if (matrix1.n != matrix2.n || matrix1.m != matrix2.m){
+            throw new ArgumentException("Matrices must have the same dimensions.");
+        }
+        FloatMatrix result = new FloatMatrix(matrix1.n, matrix1.m);
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix1.m; j++){
+                result[i, j] = (int)matrix1[i, j] & (int)matrix2[i, j];
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator &(FloatMatrix matrix, float scalar){
+        FloatMatrix result = new FloatMatrix(matrix.n, matrix.m);
+        for (int i = 0; i < matrix.n; i++){
+            for (int j = 0; j < matrix.m; j++){
+                result[i, j] = (int)matrix[i, j] & (int)scalar;
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator >>(FloatMatrix matrix1, FloatMatrix matrix2){
+        if (matrix1.n != matrix2.n || matrix1.m != matrix2.m){
+            throw new ArgumentException("Matrices must have the same dimensions.");
+        }
+        FloatMatrix result = new FloatMatrix(matrix1.n, matrix1.m);
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix1.m; j++){
+                byte[] bytes1 = BitConverter.GetBytes(matrix1[i, j]);
+                byte[] bytes2 = BitConverter.GetBytes(matrix2[i, j]);
+                for (int k = 0; k < bytes1.Length; k++){
+                    bytes1[k] >>= bytes2[k];
+                }
+                float value = BitConverter.ToSingle(bytes1, 0);
+                result[i, j] = value;
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator >>(FloatMatrix matrix, ushort scalar){
+        FloatMatrix result = new FloatMatrix(matrix.n, matrix.m);
+        byte[] scalarBytes = BitConverter.GetBytes(scalar);
+        for (int i = 0; i < matrix.n; i++){
+            for (int j = 0; j < matrix.m; j++){
+                byte[] matrixBytes = BitConverter.GetBytes(matrix[i, j]);
+                for (int k = 0; k < matrixBytes.Length; k++){
+                    matrixBytes[k] >>= scalarBytes[k];
+                }
+                float value = BitConverter.ToSingle(matrixBytes, 0);
+                result[i, j] = value;
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator <<(FloatMatrix matrix1, FloatMatrix matrix2){
+        if (matrix1.n != matrix2.n || matrix1.m != matrix2.m){
+            throw new ArgumentException("Matrices must have the same dimensions.");
+        }
+        FloatMatrix result = new FloatMatrix(matrix1.n, matrix1.m);
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix1.m; j++){
+                byte[] bytes1 = BitConverter.GetBytes(matrix1[i, j]);
+                byte[] bytes2 = BitConverter.GetBytes(matrix2[i, j]);
+                for (int k = 0; k < bytes1.Length; k++){
+                    bytes1[k] <<= bytes2[k];
+                }
+                float value = BitConverter.ToSingle(bytes1, 0);
+                result[i, j] = value;
+            }
+        }
+        return result;
+    }
+
+    public static FloatMatrix operator <<(FloatMatrix matrix, ushort scalar){
+        FloatMatrix result = new FloatMatrix(matrix.n, matrix.m);
+        byte[] scalarBytes = BitConverter.GetBytes(scalar);
+        for (int i = 0; i < matrix.n; i++){
+            for (int j = 0; j < matrix.m; j++){
+                byte[] matrixBytes = BitConverter.GetBytes(matrix[i, j]);
+                for (int k = 0; k < matrixBytes.Length; k++){
+                    matrixBytes[k] <<= scalarBytes[k];
+                }
+                float value = BitConverter.ToSingle(matrixBytes, 0);
+                result[i, j] = value;
+            }
+        }
+        return result;
+    }
+
+    public static bool operator ==(FloatMatrix matrix1, FloatMatrix matrix2){
+        if (matrix1.n != matrix2.n || matrix1.m != matrix2.m){
+           return false;
+        }
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix1.m; j++){
+                if (matrix1[i, j] != matrix2[i, j])
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    public static bool operator !=(FloatMatrix matrix1, FloatMatrix matrix2){
+        if (matrix1.n != matrix2.n || matrix1.m != matrix2.m){
+           return false;
+        }
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix1.m; j++){
+                if (matrix1[i, j] != matrix2[i, j])
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    //Порівняння
+    public static bool operator >(FloatMatrix matrix1, FloatMatrix matrix2){
+        if (matrix1.n != matrix2.n || matrix1.m != matrix2.m){
+            throw new ArgumentException("Matrices must have the same dimensions.");
+        }
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix1.m; j++){
+                if (matrix1[i, j] <= matrix2[i, j])
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    public static bool operator <(FloatMatrix matrix1, FloatMatrix matrix2){
+        if (matrix1.n != matrix2.n || matrix1.m != matrix2.m){
+            throw new ArgumentException("Matrices must have the same dimensions.");
+        }
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix1.m; j++){
+                if (matrix1[i, j] >= matrix2[i, j])
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    public static bool operator >=(FloatMatrix matrix1, FloatMatrix matrix2){
+        if (matrix1.n != matrix2.n || matrix1.m != matrix2.m){
+            throw new ArgumentException("Matrices must have the same dimensions.");
+        }
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix1.m; j++){
+                if (matrix1[i, j] < matrix2[i, j])
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    public static bool operator <=(FloatMatrix matrix1, FloatMatrix matrix2){
+        if (matrix1.n != matrix2.n || matrix1.m != matrix2.m){
+            throw new ArgumentException("Matrices must have the same dimensions.");
+        }
+        for (int i = 0; i < matrix1.n; i++){
+            for (int j = 0; j < matrix1.m; j++){
+                if (matrix1[i, j] > matrix2[i, j])
+                    return false;
+            }
+        }
+        return true;
+    }
 }
